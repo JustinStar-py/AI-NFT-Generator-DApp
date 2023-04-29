@@ -2,26 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { configureChains, mainnet, WagmiConfig, createClient } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
 
-const { provider, webSocketProvider } = configureChains(
-  [mainnet],
-  [publicProvider()]
-);
-const client = createClient({
-  autoConnect: true,
-  provider,
-  webSocketProvider,
-});
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <WagmiConfig client={client}>
      <React.StrictMode>
+        <head>
+           <link rel="shortcut icon" href="https://your-dapp.com/your-icon.png" />
+      </head>
         <App />
      </React.StrictMode>
-   </WagmiConfig>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -42,6 +42,7 @@ header {
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 5px;
+  color: black;
   font-weight: 500;
   transition: 0.3s;
   display: flex;
@@ -49,24 +50,24 @@ header {
 }
 
 .headerItem:hover {
-  background-color: rgb(34, 42, 58);
+  background-color: rgb(243, 197, 26);
   cursor: pointer;
 }
 
 .connectButton {
-  background-color: #243056; 
+  background-color: rgb(243, 197, 26);
   padding: 10px;
   padding-right: 20px;
   padding-left: 20px;
-  border-radius: 100px;
-  color: #5981F3;
+  border-radius: 10px;
+  color: #ffffff;
   font-weight: bold;
   transition: 0.3s;
 }
 
 .connectButton:hover {
   cursor: pointer;
-  color: #3b4874
+  color: #ffe7a5
 }
 
 .mainWindow {
@@ -77,7 +78,7 @@ header {
 
 .link {
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .tradeBox {
