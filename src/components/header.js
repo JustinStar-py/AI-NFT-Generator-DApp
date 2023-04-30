@@ -14,8 +14,12 @@ function Header() {
   useEffect(() => {
      window.ethereum.request({method: 'eth_accounts'})
        .then((accounts) => {
+         if (accounts.length) {
                updateWallet(accounts[0]);
                setConnectStatus(true)
+          } else {
+              setConnectStatus(false)
+         } 
            })
         }, [])
 
@@ -43,7 +47,7 @@ function Header() {
           <img src={logo} alt="eth" className="eth" />
           Ethereum
         </div>
-        <div className="connectButton" onClick={handleConnect}>
+        <div className={ConnectStatus ? "disconnectButton" : "connectButton"} onClick={handleConnect}>
            {ConnectStatus ? "Disconnect" : "Connect"}
         </div>
       </div>
