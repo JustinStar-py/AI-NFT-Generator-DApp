@@ -2,8 +2,11 @@ import React, {useState, useEffect, useRef} from 'react';
 import { Link } from "react-router-dom";
 import logo from '../logo.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
+import Web3 from 'web3';
+
 
 function Header() {
+  const web3 = new Web3(Web3.givenProvider);
   const onboarding = useRef();
   const [hasProvider, setHasProvider] = useState(false)
   const initialState = { accounts: [] }               
