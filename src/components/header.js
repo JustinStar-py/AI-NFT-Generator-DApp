@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link } from "react-router-dom";
 import logo from '../logo.svg'
-var Web3 = require('web3');
+import detectEthereumProvider from '@metamask/detect-provider'
 
 function Header() {
   const onboarding = useRef();
@@ -9,19 +9,29 @@ function Header() {
   const initialState = { accounts: [] }               
   const [wallet, setWallet] = useState(initialState)  
   const [ConnectStatus, setConnectStatus] = useState(false)
-  let pancakeSwapAbi =  [
-    {"inputs":[{"internalType":"uint256","name":"amountIn","type":"uint256"},{"internalType":"address[]","name":"path","type":"address[]"}],"name":"getAmountsOut","outputs":[{"internalType":"uint256[]","name":"amounts","type":"uint256[]"}],"stateMutability":"view","type":"function"},
-    ];
-  var web3 = new Web3('https://snowy-compatible-gas.discover.quiknode.pro/fd01b66447628affcf409df5fcb7e738446a3b4c/');
+
+
   useEffect(() => {
+    const getProvider = async () => {
+      const provider = await detectEthereumProvider({ silent: true })
+         setHasProvider(Boolean(provider))
+      }
+    
+      getProvider()
+    }, [])
+
+  useEffect(() => {
+    try {
      window.ethereum.request({method: 'eth_accounts'})
        .then((accounts) => {
-         if (accounts.length) {
-               updateWallet(accounts[0]);
-               setConnectStatus(true)
-          } else { setConnectStatus(false) } 
-           })
-        }, [])
+             updateWallet(accounts[0]);
+             setConnectStatus(true)
+          })
+        } catch {
+             setHasProvider(false)
+             setConnectStatus(false) 
+        }}, 
+    [])
 
   const updateWallet = async (accounts) => {     
     setWallet({ accounts })                          
@@ -35,18 +45,7 @@ function Header() {
   }     
   
   const calcBNBPrice = async () => {
-    let pancakeSwapContract = "0x10ED43C718714eb63d5aA57B78B54704E256024E".toLowerCase();
-    const BNBTokenAddress = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c" //BNB
-    const USDTokenAddress  = "0x55d398326f99059fF775485246999027B3197955" //USDT
-    let bnbToSell = web3.utils.toWei("1", "ether") ;
-    let amountOut;
-    try {
-        let router = await new web3.eth.Contract( pancakeSwapAbi, pancakeSwapContract );
-        amountOut = await router.methods.getAmountsOut(bnbToSell, [BNBTokenAddress ,USDTokenAddress]).call();
-        amountOut =  web3.utils.fromWei(amountOut[1]);
-    } catch (error) {}
-    if(!amountOut) return 0;
-    alert(amountOut);
+
 }
 
 
@@ -63,9 +62,15 @@ function Header() {
           <img src={logo} alt="eth" className="eth" />
           Ethereum
         </div>
-        <div className={ConnectStatus ? "disconnectButton" : "connectButton"} onClick={handleConnect}>
-            {ConnectStatus ? "Disconnect" : "Connect"}
-        </div>
+        {hasProvider ?  
+            <div className="connectButton" onClick={handleConnect}>
+                 {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect"}
+             </div>
+             :   
+             <a className="connectButton" href={'https://metamask.io/download/'}>
+                    install metamask
+            </a>
+          }
         <div className={ConnectStatus ? "disconnectButton" : "connectButton"}  onClick={calcBNBPrice}>
             alret
         </div>
