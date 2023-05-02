@@ -65,8 +65,7 @@ function Header() {
             <div className="connectButton" onClick={handleConnect}>
                  {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect"}
              </div>
-             :   
-             <a className="connectButton" href={'https://metamask.io/download/'}>
+             :   <a className="connectButton" href={'https://metamask.io/download/'}>
                     install metamask
             </a>
           }

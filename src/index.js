@@ -10,6 +10,7 @@ root.render(
      <React.StrictMode>
         <head>
            <link rel="shortcut icon" href="https://your-dapp.com/your-icon.png" />
+           {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" /> */}
       </head>
         <App />
      </React.StrictMode>
