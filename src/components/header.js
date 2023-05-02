@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import logo from '../logo.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Web3 from 'web3';
+import { simpleStorageAbi } from '../abis';
+
 
 
 function Header() {
@@ -12,7 +14,6 @@ function Header() {
   const initialState = { accounts: [] }               
   const [wallet, setWallet] = useState(initialState)  
   const [ConnectStatus, setConnectStatus] = useState(false)
-
 
   useEffect(() => {
     const getProvider = async () => {
@@ -46,11 +47,6 @@ function Header() {
     updateWallet(accounts)                  
     setConnectStatus(true)         
   }     
-  
-  const calcBNBPrice = async () => {
-
-}
-
 
   return (
     <header>
@@ -74,9 +70,6 @@ function Header() {
                     install metamask
             </a>
           }
-        <div className={ConnectStatus ? "disconnectButton" : "connectButton"}  onClick={calcBNBPrice}>
-            alret
-        </div>
       </div>
   </header>
   );
