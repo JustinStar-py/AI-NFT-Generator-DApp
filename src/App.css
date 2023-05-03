@@ -105,6 +105,20 @@
     padding-right: 30px;
   }
   
+  .tradeBox-two {
+    width: 800px;
+    background:linear-gradient( rgba(103, 103, 103, 0.248), rgba(86, 86, 86, 0.204));
+    backdrop-filter: blur(10px);
+    min-height: 300px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 50px;
+  }
   
   .tradeBoxHeader {
     display: flex;
@@ -320,7 +334,7 @@
 #Top-Title-Div {
   display: flex;
   background: url("https://hotpot.ai/images/site/ai/art_maker/teaser_400.jpg");
-  filter: contrast(0.5);
+  filter: contrast(0.6);
   margin-top: 50px;
   padding: 80px;
 }
@@ -328,7 +342,7 @@
 #Top-Title-Div-Right {
   display: flex;
   background: url("https://e0.pxfuel.com/wallpapers/772/784/desktop-wallpaper-retro-black-and-white-retro-black-and-white-design.jpg");
-  filter: contrast(0.5);
+  filter: contrast(0.55);
   margin-top: 50px;
   justify-content: right;
   padding: 80px;
@@ -337,7 +351,7 @@
 #Top-Title-Div-Three {
   display: flex;
   background: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2022/08/Fantasy-forest-scene.jpg");
-  filter: contrast(0.5);
+  filter: contrast(0.55);
   margin-top: 50px;
   padding: 80px;
   background-size: contain;

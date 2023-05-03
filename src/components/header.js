@@ -17,24 +17,25 @@ function Header() {
 
   useEffect(() => {
     const getProvider = async () => {
-      const provider = await detectEthereumProvider({ silent: true })
-         setHasProvider(Boolean(provider))
+        const provider = await detectEthereumProvider({ silent: true })
+        setHasProvider(Boolean(provider));        
+        setConnectStatus(false);
       }
     
       getProvider()
     }, [])
 
   useEffect(() => {
-    try {
-     window.ethereum.request({method: 'eth_accounts'})
+     window.ethereum?.request({method: 'eth_accounts'})
        .then((accounts) => {
+          if (accounts.length) {
              updateWallet(accounts[0]);
              setConnectStatus(true)
-          })
-        } catch {
-             setHasProvider(false)
-             setConnectStatus(false) 
-        }}, 
+          } else {
+             setConnectStatus(false)
+          }
+      })
+     }, 
     [])
 
   const updateWallet = async (accounts) => {     
@@ -42,25 +43,27 @@ function Header() {
   }           
 
   const handleConnect = async () => {                
-    let accounts = await window.ethereum.request({   
-      method: "eth_requestAccounts"})                                               
-    updateWallet(accounts)                  
-    setConnectStatus(true)         
+     const req_connect = await window.ethereum.request({   
+      method: "eth_requestAccounts"})
+     .then(updateWallet(["Connecting"]))
+     .then((accounts) => 
+        updateWallet(accounts[0]),         
+        setConnectStatus(true)
+     ).then(error => {
+        console.log(error)
+     })                                  
   }     
 
   return (
     <header>
       <div className="leftH">
         <img src={logo} alt="logo" className="logo" />
-      <a href="/tokens" className="link">
-          <div className="headerItem">Tokens</div>
-      </a>
+      {/* <a href="/tokens" className="link">
+          <div className="headerItem">Github Repository</div>
+      </a> */}
       </div>
       <div className="rightH">
-        <div className="headerItem">
-          <img src={logo} alt="eth" className="eth" />
-          Ethereum
-        </div>
+      <div className="connectButton">Launch DApp</div>
         {hasProvider ?  
             <div className="connectButton" onClick={handleConnect}>
                  {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect"}
