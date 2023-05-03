@@ -27,7 +27,6 @@ function App() {
                  <p>The App powered by React, Node.js and libraies we include: Mui as front-end library, Web3, Hardhat</p>
                <div className="rightH">
                  <div className='connectButton'>Launch DApp</div>
-                  <div className='connectButton'>Github Repository</div>
                </div>
                </div>
 

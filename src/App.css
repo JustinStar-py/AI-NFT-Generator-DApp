@@ -359,7 +359,48 @@
 
 
 @media only screen and (max-width: 600px) {
-  #Top-Title-Div, #Top-Title-Div-Right, #Top-Title-Div-Three  {
-       width: max-content;
+  #Top-Title-Div, #Top-Title-Div-Right, #Top-Title-Div-Three {
+    width: 330px;
+    justify-content: center;
+}
+  #Top-Title-Right {
+    float: right;
+    width: 70%;
+    padding: 60px;
+    font-family: monospace;
+    font-size: 50px;
+    color: #ffffff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-weight: revert;
   }
+  #Top-Title {
+    width: 90%;
+    padding: 70px;
+    margin: 10px;
+    font-family: ui-monospace;
+    font-size: 76px;
+    color: #ffffff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-weight: revert;
+}
+  .rightH {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-left: 80px;
+}
+.tradeBox-two {
+  margin-left: 5%;
+  height: 25%;
+  width: 400px;
+}
+.mainWindow {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
 }
