@@ -320,8 +320,7 @@
   font-family: monospace;
   font-size: 75px;
   color: #ffffff;
-  background: #8800b565;
-  backdrop-filter: blur(10px);
+  background: linear-gradient(rgba(175, 186, 55, 0.578), rgba(212, 40, 255, 0.501));
   font-weight: revert;
 }
 
@@ -374,7 +373,7 @@
     float: right;
     width: 70%;
     padding: 60px;
-    font-family: monospace;
+    font-family: ui-monospace;
     font-size: 50px;
     color: #ffffff;
     -webkit-backdrop-filter: blur(10px);
@@ -404,14 +403,12 @@
     height: 25%;
     width: 400px;
  }
-
   .mainWindow {
     margin-top: 40px;
     display: flex;
     justify-content: center;
     width: fit-content;
  }
-
   #root {
     width: fit-content;
  }
@@ -419,4 +416,5 @@
   background-size: 780px !important;
   /* background-attachment: fixed; */
 }
+
 }
