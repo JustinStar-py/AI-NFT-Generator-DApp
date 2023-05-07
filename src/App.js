@@ -4,13 +4,20 @@ import React, {useState, useEffect} from 'react';
 import Header from './components/header';
 import { Router, Route , Routes} from "react-router-dom";
 import { TextField, Box } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 function App() {                        
   return (
     <div className="App">
            <Header />
              <div id="Top-Title-Div" >
-                 <h1 id="Top-Title">AI NFT <br></br>DApp Generator</h1>
+                 <h1 id="Top-Title">AI NFT <br></br>DApp Generator <br></br> 
+                      <GitHubIcon fontSize="large" />
+                      <TelegramIcon fontSize="large" />
+                      <TwitterIcon fontSize="large" />
+                 </h1>
              <div>
              </div>
              </div>
