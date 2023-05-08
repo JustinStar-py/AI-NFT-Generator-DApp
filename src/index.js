@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +12,9 @@ root.render(
            <link rel="shortcut icon" href="https://your-dapp.com/your-icon.png" />
            {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" /> */}
       </head>
-        <App />
+        <BrowserRouter>
+              <App />
+         </BrowserRouter>
      </React.StrictMode>
 );
 

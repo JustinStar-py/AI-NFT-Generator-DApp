@@ -1,7 +1,8 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
-
+import LinkIcon from '@mui/icons-material/Link';
+import { green } from '@mui/material/colors';
 
 function Main() {
     return (<><div id="Top-Title-Div" >
@@ -17,8 +18,9 @@ function Main() {
         <h1 id="Top-Title-Right">Cheap & Free<br></br>Lets make it toghater</h1>
     </div>
     <div id="Top-Title-Div-Three" >
-        <h1 id="Top-Title">Check The<br></br>Github Repository</h1>
-    </div>
+        <h1 id="Top-Title">Check The<br></br>Github Repository <br></br><a href='https://github.com/JustinStar-py/AI-NFT-Generator-DApp'><LinkIcon fontSize="45px" sx={{ color: green[400] }} /></a></h1>
+        
+   </div>
     <div className='mainWindow'>
         <div className='tradeBox-two'>
             <h1>Try launch DApp</h1>

@@ -320,7 +320,7 @@
   font-family: monospace;
   font-size: 75px;
   color: #ffffff;
-  background: linear-gradient(rgba(175, 186, 55, 0.578), rgba(212, 40, 255, 0.501));
+  background: linear-gradient(rgba(55, 186, 184, 0.578), rgba(212, 40, 255, 0.501));
   font-weight: revert;
 }
 

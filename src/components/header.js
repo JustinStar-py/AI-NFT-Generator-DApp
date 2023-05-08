@@ -57,13 +57,15 @@ function Header() {
   return (
     <header>
       <div className="leftH">
-        <img src={logo} alt="logo" className="logo" />
-      {/* <a href="/tokens" className="link">
-          <div className="headerItem">Github Repository</div>
-      </a> */}
+        <Link  to="/" className="link">
+             <img src={logo} alt="logo" className="logo" />
+             {/* <a href="/tokens" className="link">
+                  <div className="headerItem">Github Repository</div>
+                 </a> */}
+        </Link>
       </div>
       <div className="rightH">
-      <div className="connectButton">Launch DApp</div>
+      <Link to="/app" className="connectButton">Launch DApp</Link>
         {hasProvider ?  
             <div className="connectButton" onClick={handleConnect}>
                  {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect"}
