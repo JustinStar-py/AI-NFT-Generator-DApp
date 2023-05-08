@@ -7,23 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(
-    180deg,
-    #03002f 35%,
-    #120022 65%
-  ); 
+  background: #0e111b;
   /* background: url(https://img.freepik.com/premium-vector/vector-seamless-striped-pattern-vertical-lines-endless-texture-simple-black-white-background_547648-3644.jpg); */
   color: white;
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
-.App {
+.App-Main {
   background: url(../public/v1027-107-a.jpg);
   background-repeat: repeat-y;
   background-size: contain;
   /* background-attachment: fixed; */
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

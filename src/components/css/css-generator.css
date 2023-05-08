@@ -1,0 +1,45 @@
+.main-generator {
+     display: flex;
+}
+
+.css-13r4j3i .MuiTextField-root {
+    margin: 8px !important;
+    background: #909090ba !important;
+    width: 55ch !important;
+    border-radius: 16px !important;
+    height: 45ch !important;
+}
+
+.css-85zwa9-MuiInputBase-root-MuiFilledInput-root {
+  background-color: rgba(243, 243, 243, 0.92) !important;
+  height: 35ch !important;
+  width: 55ch;
+}
+
+.css-7209ej-MuiInputBase-input-MuiFilledInput-input {
+    height: inherit !important;
+    margin-top: 30px !important;
+}
+
+.main-generator div {
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-left: 35px;
+}
+.css-o943dk-MuiFormLabel-root-MuiInputLabel-root{
+   transform: translate(48px, 15px) scale(0.75) !important;
+}
+
+.css-o943dk-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #1976d2;
+    padding: 10px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-generator {
+        display: block;
+   }
+   .main-generator div {
+       width: 300px;
+   }
+}

@@ -65,7 +65,7 @@ function Header() {
         </Link>
       </div>
       <div className="rightH">
-      <Link to="/app" className="connectButton">Launch DApp</Link>
+      <Link to="/app" className="connectButton link" dec>App</Link>
         {hasProvider ?  
             <div className="connectButton" onClick={handleConnect}>
                  {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect"}

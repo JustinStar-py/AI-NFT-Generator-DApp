@@ -66,6 +66,17 @@
     transition: 0.3s;
 }
   
+.Button-0 {
+  background-color: rgb(255, 242, 57);
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  color: #000000;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
   .disconnectButton {
     background-color: rgb(255, 79, 25);
     padding: 10px;
@@ -90,7 +101,6 @@
   
   .link {
     text-decoration: none;
-    color: rgb(0, 0, 0);
   }
   
   .tradeBox {
@@ -107,9 +117,9 @@
     padding-right: 30px;
   }
   
-  .tradeBox-two {
-    width: 800px;
-    background: linear-gradient( #000000c0, #000000c0);
+  .medium-box {
+    width: 60%;
+    background: #00000066;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     min-height: 300px;
@@ -295,24 +305,7 @@
 	color: #51596f;
   }
 
-  .css-13r4j3i .MuiTextField-root {
-    margin: 8px !important;
-    background: #909090ba !important;
-    width: 55ch !important;
-    border-radius: 16px !important;
-    height: 45ch !important;
-}
 
-.css-85zwa9-MuiInputBase-root-MuiFilledInput-root {
-  background-color: rgb(191 191 191 / 92%) !important;
-  height: 35ch !important;
-  width: 55ch;
-}
-
-.css-7209ej-MuiInputBase-input-MuiFilledInput-input {
-    height: inherit !important;
-    margin-top: 30px !important;
-}
 
 #Top-Title {
   float: left;
@@ -320,7 +313,8 @@
   font-family: monospace;
   font-size: 75px;
   color: #ffffff;
-  background: linear-gradient(rgba(55, 186, 184, 0.578), rgba(212, 40, 255, 0.501));
+  /* background: linear-gradient(rgba(55, 186, 184, 0.384), rgba(212, 40, 255, 0.378)); */
+  background: #21273a79;
   font-weight: revert;
 }
 
@@ -340,7 +334,6 @@
   display: flex;
   /* background: url("../public/v1027-107-a.jpg"); */
   filter: contrast(0.6);
-  margin-top: 50px;
   padding: 80px;
 }
 
@@ -348,7 +341,7 @@
   display: flex;
   background: #1f263972;
   backdrop-filter: blur(5px);;
-  margin-top: 50px;
+  margin-top: 85px;
   justify-content: right;
   padding: 80px;
 }
@@ -412,9 +405,9 @@
   #root {
     width: fit-content;
  }
- .App {
-  background-size: 780px !important;
-  /* background-attachment: fixed; */
+ .App-Main {
+   background-size: 780px !important;
+   /* background-attachment: fixed; */
 }
 
 }
