@@ -66,16 +66,30 @@
     transition: 0.3s;
 }
   
-.Button-0 {
-  background-color: rgb(255, 242, 57);
-  padding: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
-  border-radius: 10px;
-  color: #000000;
-  font-weight: bold;
-  transition: 0.3s;
-}
+  .Button-0 {
+    background-color: rgb(125,255,91);
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    width: 80%;
+    color: #000000;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .Button-1 {
+    background-color: rgb(186,72,238);
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    width: 80%;
+    transition: 0.3s;
+    margin: 10px;
+  }
 
   .disconnectButton {
     background-color: rgb(255, 79, 25);

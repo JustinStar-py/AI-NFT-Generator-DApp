@@ -1,28 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextField, Box } from '@mui/material';
 import './css/css-generator.css';
 import Replicate from "replicate";
 import axios from 'axios';
 import { Buffer } from 'buffer';
 import * as ipfsHttpClient from "ipfs-http-client";
+import { message } from "antd";
 
 
 
 function Generator() {
-    const projectId = "<YOUR PROJECT ID>";
-    const projectSecret = "<YOUR PROJECT SECRET>";
-    const authorization = "Basic " + btoa(projectId + ":" + projectSecret);
+    const [messageApi, contextHolder] = message.useMessage()
+    const [Loading, isLoading] = useState(false)
+    const [Message, setMessage] = useState("null")
+    const [image_url, set_image_url] = useState(null)
+    const projectId = process.env.REACT_APP_PROJECT_ID
+    const projectSecret = process.env.REACT_APP_PROJECT_SECERT
+    const URL = `https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2`
 
-    const ipfs = ipfsHttpClient.create({
-        url: "https://ipfs.infura.io:5001/api/v0",
-        headers:{
-          authorization
-        }
-      })
-    async function ai() {
+    // const authorization = "Basic " + (projectId + ":" + projectSecret);
+    
+    useEffect(() => {
+       messageApi.destroy();
+       if (Loading) {
+           setTimeout(() => {
+           messageApi.open({
+                type: 'loading',
+                content: 'Generating your image... 👀',
+                duration: 0
+            })
+        }, 0)}
+    })
+    
+    async function HandleImage() {
+        isLoading(true)
         try {
-            const URL = `https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2`
-      
             // Send the request
             const response = await axios({
               url: URL,
@@ -33,30 +45,64 @@ function Generator() {
                 'Content-Type': 'application/json',
               },
               data: JSON.stringify({
-                inputs: "new ai robot",
-                options: { wait_for_model: true },
+                 inputs: Message,
+                 options: { wait_for_model: true },
               }),
               responseType: 'arraybuffer',
             })
       
-            const data = response.data
-            console.log(data)
+            const data = await response.data
+            const base64String = btoa(String.fromCharCode(...new Uint8Array(data)));
+
+           set_image_url(`data:image/png;base64,${base64String}`)
+           console.log(`data:image/png;base64,${base64String}`)
+            // const img = await uploadImage(data)
           } catch (err) {
-            console.error(err)
+               console.error(err)
           }
+        isLoading(false);
     }
-    ai()
+
+    const handleChange = (event) => {
+         setMessage(event);
+    };
+
+    async function uploadImage(fileContent) {
+        const uint8Array = new Uint8Array(fileContent)
+    
+        // encrypt the authorization
+        const authorization = `Basic ${Buffer.from(
+          `${projectId}:${projectSecret}`
+        ).toString('base64')}`
+    
+        const client = await ipfsHttpClient.create({
+          host: 'ipfs.infura.io',
+          port: 5001,
+          protocol: 'https',
+          headers: {
+            authorization,
+          },
+        })
+
+        const result = await client.add(uint8Array)
+        const uri = `https://cloudflare-ipfs.com/ipfs/${result.path}`
+        console.log(uri)
+    }
+    
     return (
-       <div className='mainWindow'>
+      <>
+       {contextHolder}
+        <div className='mainWindow'>
                <div className='main-generator'>
-                  <div>
-                      <TextField id="filled-multiline-static" multiline rows={4} placeholder='Write your text here for generating image' variant="filled"/>
-                      <div class="connectButton" onClick={ai}>Generate Image</div>
-                      <div class="Button-0">To nft</div>
-                  </div>
-                  <img src="https://www.technopd.com/storage/other/midj-img.png" width="400" height="400px" loading="lazy" style={{borderRadius:'35px'}}/>
-              </div>
-       </div>
+                   <div className='generator-box'>
+                        <TextField id="filled-multiline-static" onChange={(event) => {handleChange(event.target.value)}} multiline rows={4} placeholder='Write your text here for generating image' variant="filled"/>
+                        <div class="Button-1" onClick={HandleImage}>Generate Image</div>
+                        <div class="Button-0">Mint it as nft</div>
+                   </div>
+                   <img src={image_url? image_url: "https://www.technopd.com/storage/other/midj-img.png"} width="450" height="450px" loading="lazy" style={{borderRadius:'35px'}}/>
+               </div>
+        </div>
+      </>
     )
 }
 
