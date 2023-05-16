@@ -11,7 +11,10 @@ import { message } from "antd";
 
 function Generator() {
     const [messageApi, contextHolder] = message.useMessage()
-    const [Loading, isLoading] = useState(false)
+    const [Loading, isLoading] = useState({
+        open:false,
+        message:null
+    })
     const [Message, setMessage] = useState("null")
     const [image_url, set_image_url] = useState(null)
     const projectId = process.env.REACT_APP_PROJECT_ID
@@ -22,18 +25,23 @@ function Generator() {
     
     useEffect(() => {
        messageApi.destroy();
-       if (Loading) {
+       if (Loading.open) {
            setTimeout(() => {
            messageApi.open({
                 type: 'loading',
-                content: 'Generating your image... 👀',
+                content: Loading.message,
                 duration: 0
             })
         }, 0)}
     })
     
     async function HandleImage() {
-        isLoading(true)
+
+        isLoading({
+             open:true,
+             message: 'Generating your image... 👀'
+        })
+      
         try {
             // Send the request
             const response = await axios({
@@ -55,12 +63,18 @@ function Generator() {
             const base64String = btoa(String.fromCharCode(...new Uint8Array(data)));
 
            set_image_url(`data:image/png;base64,${base64String}`)
-           console.log(`data:image/png;base64,${base64String}`)
-            // const img = await uploadImage(data)
-          } catch (err) {
+            
+           isLoading({
+               open:true,
+               message:"Uploading your image to IPFS... 🔥"
+           })
+           const img = await uploadImage(data)
+
+           isLoading({open:false});
+        } catch (err) {
                console.error(err)
+               isLoading({open:false});
           }
-        isLoading(false);
     }
 
     const handleChange = (event) => {
