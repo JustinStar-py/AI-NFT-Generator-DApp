@@ -17,10 +17,10 @@ function Generator() {
     })
     const [Message, setMessage] = useState("null")
     const [image_url, set_image_url] = useState(null)
+    const [ipfs_url, set_ipfs_url] = useState(null)
     const projectId = process.env.REACT_APP_PROJECT_ID
     const projectSecret = process.env.REACT_APP_PROJECT_SECERT
     const URL = `https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2`
-
     // const authorization = "Basic " + (projectId + ":" + projectSecret);
     
     useEffect(() => {
@@ -68,7 +68,10 @@ function Generator() {
                open:true,
                message:"Uploading your image to IPFS... 🔥"
            })
-           const img = await uploadImage(data)
+
+           const img = await uploadImage(data).then(
+             set_ipfs_url(img)
+           )
 
            isLoading({open:false});
         } catch (err) {
