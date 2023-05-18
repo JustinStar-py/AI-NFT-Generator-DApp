@@ -102,9 +102,9 @@ function Generator() {
         })
 
         const result = await client.add(uint8Array)
-        const uri = `https://cloudflare-ipfs.com/ipfs/${result.path}`
-        console.log(uri)
-    }
+        const uri = `https://ipfs.io/ipfs/${result.path}`
+        return uri
+      }
     
     return (
       <>
