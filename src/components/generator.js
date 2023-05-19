@@ -87,7 +87,9 @@ function Generator() {
            const img = await uploadImage(data)
 
            set_ipfs_url(img)
-           successMessage("success","successfully, image uploaded!\nnow you can try mint button")
+
+           onceMessage("success","Successfully, Image uploaded!\nNow you can try mint button")
+           
            isLoading({open:false});
         } catch (err) {
                console.error(err)
@@ -131,12 +133,18 @@ function Generator() {
       );
 
       try {
+        
           const transaction = await nft
             .connect(signer)
             .mint(ipfs_url, { value: ethers.utils.parseUnits("0.01", "ether") });
+
          await transaction.wait();
-         successMessage()
-      } catch {
+         onceMessage("success","successfully, NFT minted!")
+
+      } catch (error) {
+        
+        onceMessage("error",`Error for minting NFT:\n${error}`)
+        isLoading({open:false});
 
       }
     };
