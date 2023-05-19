@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Buffer } from 'buffer';
 import * as ipfsHttpClient from "ipfs-http-client";
 import { message } from "antd";
-
+import abi from "../abis";
 
 
 function Generator() {
@@ -21,6 +21,7 @@ function Generator() {
     const projectId = process.env.REACT_APP_PROJECT_ID
     const projectSecret = process.env.REACT_APP_PROJECT_SECERT
     const URL = `https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2`
+    const nft_contract = '0x6dd2F8fF2Ea5E7685802081C422047BAf2B56a79'
     // const authorization = "Basic " + (projectId + ":" + projectSecret);
     
     useEffect(() => {
