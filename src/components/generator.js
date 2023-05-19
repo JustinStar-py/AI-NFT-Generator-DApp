@@ -4,9 +4,11 @@ import './css/css-generator.css';
 import Replicate from "replicate";
 import axios from 'axios';
 import { Buffer } from 'buffer';
+import { ethers } from "ethers"
+import detectEthereumProvider from '@metamask/detect-provider'
 import * as ipfsHttpClient from "ipfs-http-client";
 import { message } from "antd";
-import abi from "../abis";
+import { abi } from "../abis";
 
 
 function Generator() {
@@ -36,8 +38,11 @@ function Generator() {
         }, 0)}
     })
     
-    async function HandleImage() {
+    const handleChange = (event) => {
+      setMessage(event);
+    };
 
+    async function HandleImage() {
         isLoading({
              open:true,
              message: 'Generating your image... 👀'
@@ -70,20 +75,15 @@ function Generator() {
                message:"Uploading your image to IPFS... 🔥"
            })
 
-           const img = await uploadImage(data).then(
-             set_ipfs_url(img)
-           )
-
+           const img = await uploadImage(data)
+           set_ipfs_url(img)
+           
            isLoading({open:false});
         } catch (err) {
                console.error(err)
                isLoading({open:false});
           }
     }
-
-    const handleChange = (event) => {
-         setMessage(event);
-    };
 
     async function uploadImage(fileContent) {
         const uint8Array = new Uint8Array(fileContent)
@@ -107,6 +107,30 @@ function Generator() {
         return uri
       }
     
+    async function mintImage () {
+      isLoading({
+        open:true,
+        message:"Minting image as NFT... ✨"
+    })
+      let signer = ""
+      await window.ethereum.request({   
+         method: "eth_requestAccounts"})
+        .then((accounts) => 
+            signer = accounts[0]
+       )               
+       alert(signer) 
+       const provider = new ethers.providers.Web3Provider(window.ethereum);
+       const nft = new ethers.Contract(
+          nft_contract,
+          abi,
+          provider
+      );
+       const transaction = await nft
+         .connect(signer)
+         .mint("https://ipfs.io/ipfs/QmYjvHfQucr33pQgY4T2wJ9gNPamsGmNPfwaMmPC1sVyA8", { value: ethers.utils.parseUnits("0.01", "ether") });
+      await transaction.wait();
+    };
+
     return (
       <>
        {contextHolder}
@@ -115,7 +139,7 @@ function Generator() {
                    <div className='generator-box'>
                         <TextField id="filled-multiline-static" onChange={(event) => {handleChange(event.target.value)}} multiline rows={4} placeholder='Write your text here for generating image' variant="filled"/>
                         <div class="Button-1" onClick={HandleImage}>Generate Image</div>
-                        <div class="Button-0">Mint it as nft</div>
+                        <div class="Button-0" onClick={mintImage}>Mint it as nft</div>
                    </div>
                    <img src={image_url? image_url: "https://www.technopd.com/storage/other/midj-img.png"} width="450" height="450px" loading="lazy" style={{borderRadius:'35px'}}/>
                </div>

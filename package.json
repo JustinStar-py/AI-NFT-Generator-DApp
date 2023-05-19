@@ -17,6 +17,7 @@
     "buffer": "^6.0.3",
     "deepai": "^1.0.21",
     "dotenv": "^16.0.3",
+    "ethers": "^5.7.2",
     "hardhat": "^2.14.0",
     "ipfs-http-client": "^60.0.0",
     "react": "^18.2.0",

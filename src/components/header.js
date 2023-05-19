@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import logo from '../logo.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Web3 from 'web3';
-import { simpleStorageAbi } from '../abis';
-
 
 
 function Header() {
@@ -39,7 +37,7 @@ function Header() {
     [])
 
   const updateWallet = async (accounts) => {     
-    setWallet({ accounts })                          
+      setWallet({ accounts })                          
   }           
 
   const handleConnect = async () => {                
@@ -47,10 +45,12 @@ function Header() {
       method: "eth_requestAccounts"})
      .then(updateWallet(["Connecting"]))
      .then((accounts) => 
-        updateWallet(accounts[0]),         
-        setConnectStatus(true)
+
+         updateWallet(accounts[0]),         
+         setConnectStatus(true)
+         
      ).then(error => {
-        console.log(error)
+         console.log(error)
      })                                  
   }     
 
