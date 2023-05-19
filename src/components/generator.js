@@ -112,24 +112,16 @@ function Generator() {
         open:true,
         message:"Minting image as NFT... ✨"
     })
-      let signer = ""
-      await window.ethereum.request({   
-         method: "eth_requestAccounts"})
-        .then((accounts) => 
-            signer = accounts[0]
-       )               
-       alert(signer) 
        const provider = new ethers.providers.Web3Provider(window.ethereum);
-       
+       const signer = await provider.getSigner();
        const nft = new ethers.Contract(
           nft_contract,
           abi,
           provider
       );
-
        const transaction = await nft
          .connect(signer)
-         .mint("https://ipfs.io/ipfs/QmYjvHfQucr33pQgY4T2wJ9gNPamsGmNPfwaMmPC1sVyA8", { value: ethers.utils.parseUnits("0.01", "ether") });
+         .mint(ipfs_url, { value: ethers.utils.parseUnits("0.01", "ether") });
       await transaction.wait();
     };
 
