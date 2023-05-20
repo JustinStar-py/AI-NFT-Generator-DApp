@@ -3,6 +3,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkIcon from '@mui/icons-material/Link';
 import { green } from '@mui/material/colors';
+import logo from "../logo.svg"
 import '../App.css';
 
 
@@ -10,11 +11,14 @@ function Main() {
     return (
       <div className='App-Main'>
         <div id="Top-Title-Div" >
-            <h1 id="Top-Title">AI NFT <br></br>DApp Generator <br></br> 
+            <h1 id="Top-Title">AI NFT <br></br> <span id='bgreen-text'> DApp Generator </span> <br></br> 
                 <GitHubIcon fontSize="large" />
                 <TelegramIcon fontSize="large" />
                 <TwitterIcon fontSize="large" />
             </h1>
+            <div>
+                  <img src={logo} width={100}/>
+            </div>
          </div>
         <div  id="Top-Title-Div-Right">
             <h1 id="Top-Title-Right">Cheap & Free<br></br>Lets make it toghater</h1>

@@ -370,6 +370,9 @@
   background-size: contain;
 }
 
+#bgreen-text {
+  color: rgb(0, 255, 179);
+}
 
 @media only screen and (max-width: 600px) {
   #Top-Title-Div, #Top-Title-Div-Right, #Top-Title-Div-Three {
