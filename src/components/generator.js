@@ -152,14 +152,14 @@ function Generator() {
     return (
       <>
        {contextHolder}
-        <div className='mainWindow'>
+        <div className='main-generator-window-parent'>
                <div className='main-generator'>
                    <div className='generator-box'>
                         <TextField id="filled-multiline-static" onChange={(event) => {handleChange(event.target.value)}} multiline rows={4} placeholder='Write your text here for generating image' variant="filled"/>
                         <div class="Button-1" onClick={HandleImage}>Generate Image</div>
                         <div class="Button-0" onClick={mintImage}>Mint it as nft</div>
                    </div>
-                   <img src={image_url? image_url: "https://www.technopd.com/storage/other/midj-img.png"} width="450" height="450px" loading="lazy" style={{borderRadius:'35px'}}/>
+                   <img src={image_url? image_url: "https://static.wikia.nocookie.net/241fc9f0-5be4-46db-bcc7-c782dabd0507/scale-to-width/755"} width="450" height="450px" loading="lazy" style={{borderRadius:'35px'}}/>
                </div>
         </div>
       </>

@@ -3,7 +3,9 @@
   }
   
   header {
+    position: fixed;
     height: 100px;
+    width: 93.5vw;
     backdrop-filter: blur(4px);
     background: #000000c0;
     display: flex;
@@ -11,12 +13,15 @@
     align-items: center;
     padding-left: 50px;
     padding-right: 50px;
+    margin-bottom: 0px;
 }
   
   .logo{
-	  width: 40px;
-	  height: 40px;
-	  padding-right: 20px;
+	  width: 60px;
+	  height: 60px;
+	  padding-right: 10px;
+    vertical-align:middle;
+    font-family: "cursive";
   }
   
   .eth{
@@ -57,7 +62,7 @@
   
   .connectButton {
     background-color: rgb(71 104 255);
-    padding: 10px;
+    padding: 12px 20px;
     padding-right: 20px;
     padding-left: 20px;
     border-radius: 10px;
@@ -108,9 +113,19 @@
   }
   
   .mainWindow {
-    margin-top: 40px;
+    position: relative;
+    top: 360px;
     display: flex;
     justify-content: center;
+    width: 100vw;
+  }
+  
+  .main-generator-window-parent {
+    position: relative;
+    top: 160px;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
   }
   
   .link {
@@ -345,6 +360,8 @@
 }
 
 #Top-Title-Div {
+  position:relative;
+  top:130px;
   display: flex;
   /* background: url("../public/v1027-107-a.jpg"); */
   filter: contrast(0.6);
@@ -352,6 +369,8 @@
 }
 
 #Top-Title-Div-Right {
+  position:relative;
+  top:200px;
   display: flex;
   background: #1f263972;
   backdrop-filter: blur(5px);;
@@ -361,6 +380,8 @@
 }
 
 #Top-Title-Div-Three {
+  position:relative;
+  top:300px;
   display: flex;
   /* background: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2022/08/Fantasy-forest-scene.jpg");
   filter: grayscale(1); */
@@ -412,12 +433,6 @@
     margin-left: 5%;
     height: 25%;
     width: 400px;
- }
-  .mainWindow {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
  }
   #root {
     width: fit-content;

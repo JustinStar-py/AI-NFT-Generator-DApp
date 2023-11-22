@@ -3,7 +3,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkIcon from '@mui/icons-material/Link';
 import { green } from '@mui/material/colors';
-import logo from "../logo.svg"
+import logo from "../logo.png"
 import '../App.css';
 
 
@@ -12,9 +12,9 @@ function Main() {
       <div className='App-Main'>
         <div id="Top-Title-Div" >
             <h1 id="Top-Title">AI NFT <br></br> <span id='bgreen-text'> DApp Generator </span> <br></br> 
-                <GitHubIcon fontSize="large" />
-                <TelegramIcon fontSize="large" />
-                <TwitterIcon fontSize="large" />
+                <GitHubIcon fontSize="15" />
+                <TelegramIcon fontSize="15" />
+                <TwitterIcon fontSize="15" />
             </h1>
             <div>
                   <img src={logo} width={100}/>

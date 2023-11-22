@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link } from "react-router-dom";
-import logo from '../logo.svg'
+import logo from '../logo.png'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Web3 from 'web3';
 
@@ -59,16 +59,14 @@ function Header() {
       <div className="leftH">
         <Link  to="/" className="link">
              <img src={logo} alt="logo" className="logo" />
-             {/* <a href="/tokens" className="link">
-                  <div className="headerItem">Github Repository</div>
-                 </a> */}
+             <h4 style={{display:"contents",color:"white"}}>AI NFT Generator</h4>
         </Link>
       </div>
       <div className="rightH">
-      <Link to="/app" className="connectButton link" dec>App</Link>
+      <Link to="/app" className="connectButton link" dec>Inter App</Link>
         {hasProvider ?  
             <div className="connectButton" onClick={handleConnect}>
-                 {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect"}
+                 {ConnectStatus ? `${(wallet.accounts).slice(0,5)}...${(wallet.accounts).slice(38)}` : "Connect Wallet"}
              </div>
              :   <a className="connectButton" href={'https://metamask.io/download/'}>
                     install metamask
